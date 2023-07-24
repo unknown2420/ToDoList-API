@@ -28,6 +28,10 @@ public class TaskService {
         return taskRepository.findAll();
     }
 
+    /**
+     * Adding a task to the database
+     * @param task
+     */
     public void addTodo(Task task){
         taskRepository.save(task);
     }
