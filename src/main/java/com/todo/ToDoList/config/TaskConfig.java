@@ -3,14 +3,17 @@ package com.todo.ToDoList.config;
 import com.todo.ToDoList.model.Task;
 import com.todo.ToDoList.repository.TaskRepository;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.List;
 
 @Configuration
 public class TaskConfig {
 
+    @Bean
     CommandLineRunner commandLineRunner(TaskRepository taskRepository){
         return args -> {
             Task task = new Task(
@@ -43,6 +46,7 @@ public class TaskConfig {
                     false,
                     LocalDate.of(2023, Month.JULY, 28)
             );
+            taskRepository.saveAll(List.of(task, task1, task2, task3, task4));
 
         };
     }
