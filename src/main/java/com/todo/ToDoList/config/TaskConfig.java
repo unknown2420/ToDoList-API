@@ -13,6 +13,12 @@ public class TaskConfig {
 
     CommandLineRunner commandLineRunner(TaskRepository taskRepository){
         return args -> {
+            Task task = new Task(
+                    "Set up Project Files",
+                    "Set up the Project file structure",
+                    true,
+                    LocalDate.of(2023, Month.JULY, 24)
+            );
             Task task1 = new Task(
                     "Set up API",
                     "Make an API endpoint that allows you to get all tasks",
@@ -25,11 +31,17 @@ public class TaskConfig {
                     false,
                     LocalDate.of(2023, Month.JULY, 25)
             );
-            Task task1 = new Task(
-                    "Set up API",
-                    "Make an API endpoint that allows you to get all tasks",
+            Task task3 = new Task(
+                    "Work on Updating a task",
+                    "Make an API endpoint that allows you update a task based on the ID",
                     false,
-                    LocalDate.of(2023, Month.JULY, 24)
+                    LocalDate.of(2023, Month.JULY, 26)
+            );
+            Task task4 = new Task(
+                    "Work on Deleting a task",
+                    "Make an API endpoint that allows you to delete a task based on the ID",
+                    false,
+                    LocalDate.of(2023, Month.JULY, 28)
             );
 
         };
