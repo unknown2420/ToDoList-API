@@ -19,7 +19,16 @@ public class TaskService {
         this.taskRepository = taskRepository;
     }
 
-    public List<Task> getTask(){
+
+    /**
+     * Get method that returns all tasks
+     * @return
+     */
+    public List<Task> getTasks(){
         return taskRepository.findAll();
+    }
+
+    public void addTodo(Task task){
+        taskRepository.save(task);
     }
 }
