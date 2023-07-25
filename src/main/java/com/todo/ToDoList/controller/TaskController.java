@@ -55,4 +55,13 @@ public class TaskController {
         return taskService.updateTask(task, id);
 
     }
+
+    /**
+     * Deleting a task by its id
+     * @param id
+     */
+    @DeleteMapping("/{id}")
+    public void deleteTask(@PathVariable Long id ){
+        taskService.deleteTask(id);
+    }
 }

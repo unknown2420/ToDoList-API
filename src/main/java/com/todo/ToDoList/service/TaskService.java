@@ -64,5 +64,12 @@ public class TaskService {
         );
     }
 
+    /**
+     * Deleting a task by its id
+     */
+    public void deleteTask(Long id){
+        taskRepository.deleteById(id);
+    }
+
 
 }
