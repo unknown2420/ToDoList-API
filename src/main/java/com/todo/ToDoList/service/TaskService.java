@@ -1,5 +1,6 @@
 package com.todo.ToDoList.service;
 
+import com.todo.ToDoList.exception.TaskNotFoundException;
 import com.todo.ToDoList.model.Task;
 import com.todo.ToDoList.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +38,13 @@ public class TaskService {
     }
 
     /**
-     * PUT Request
+     * Getting a task by its Id
      */
+    public Task getTaskById(Long id){
+        return taskRepository.findById(id)
+                .orElseThrow(() ->
+                        new TaskNotFoundException(id));
+    }
+
 
 }

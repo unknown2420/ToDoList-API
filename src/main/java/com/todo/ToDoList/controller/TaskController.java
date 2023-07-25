@@ -34,4 +34,12 @@ public class TaskController {
     public void addTodo(@RequestBody Task task){
         taskService.addTodo(task);
     }
+
+    /**
+     * Getting a specific task by its Id
+     */
+    @GetMapping("/{id}")
+    public Task getTaskById(@PathVariable Long id){
+        return taskService.getTaskById(id);
+    }
 }
