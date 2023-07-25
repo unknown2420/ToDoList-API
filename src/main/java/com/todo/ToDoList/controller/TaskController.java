@@ -42,4 +42,17 @@ public class TaskController {
     public Task getTaskById(@PathVariable Long id){
         return taskService.getTaskById(id);
     }
+
+
+    /**
+     * Updating a task based on its Id
+     * @param task
+     * @param id
+     * @return
+     */
+    @PutMapping("/{id}")
+    public Task updateTask(@RequestBody Task task, @PathVariable Long id){
+        return taskService.updateTask(task, id);
+
+    }
 }

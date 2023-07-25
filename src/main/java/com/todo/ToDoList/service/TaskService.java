@@ -6,8 +6,6 @@ import com.todo.ToDoList.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.time.Month;
 import java.util.List;
 
 @Service
@@ -44,6 +42,26 @@ public class TaskService {
         return taskRepository.findById(id)
                 .orElseThrow(() ->
                         new TaskNotFoundException(id));
+    }
+
+    /**
+     * Updating a task by its Id
+     */
+    public Task updateTask(Task newTask, Long id){
+        return taskRepository.findById(id).map(
+                task1 -> {
+                    task1.setTitle(newTask.getTitle());
+                    task1.setDescription(newTask.getDescription());
+                    task1.setDate(newTask.getDate());
+                    task1.setStatus(newTask.getStatus());
+                    return taskRepository.save(newTask);
+                })
+                .orElseGet(() -> {
+                    newTask.setId(id);
+                    return taskRepository.save(newTask);
+                }
+
+        );
     }
 
 

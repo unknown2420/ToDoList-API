@@ -51,7 +51,7 @@ public class Task {
         this.description = description;
     }
 
-    public boolean isStatus() {
+    public boolean getStatus() {
         return status;
     }
 
