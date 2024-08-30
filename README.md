@@ -1,111 +1,127 @@
-ToDo List API Documentation
-TaskController
-The TaskController class is responsible for handling HTTP requests related to tasks. It interacts with the TaskService to perform CRUD operations on tasks.
+# ToDo List API Documentation
 
-Endpoints
-GET /api/v1/tasks
-Description: Retrieve all tasks.
-Returns: A list of all tasks.
+## Overview
 
-GET /api/v1/tasks/{id}
-Description: Retrieve a specific task by its ID.
-Parameters:
+This documentation provides an overview of the ToDo List API, detailing its functionality, endpoints, and key classes. The API allows users to manage tasks through standard CRUD operations.
 
-id (Long) - The ID of the task to retrieve.
-Returns: The task with the specified ID if found.
-POST /api/v1/tasks
-Description: Create a new task.
-Payload: A JSON object representing the new task to be created.
-Returns: No response body.
+## TaskController
 
-PUT /api/v1/tasks/{id}
-Description: Update a task by its ID.
-Parameters:
+The `TaskController` class handles HTTP requests related to task management. It utilizes the `TaskService` to perform operations such as creating, reading, updating, and deleting tasks.
 
-id (Long) - The ID of the task to update.
-Payload: A JSON object representing the updated task.
-Returns: The updated task if successful.
-DELETE /api/v1/tasks/{id}
-Description: Delete a task by its ID.
-Parameters:
+### Endpoints
 
-id (Long) - The ID of the task to delete.
-Returns: No response body.
-Task
-The Task class represents a task entity in the application. It is a JPA entity and corresponds to the database table for tasks.
+#### GET `/api/v1/tasks`
+- **Description:** Retrieve all tasks.
+- **Returns:** A list of all tasks.
 
-Fields
-id (Long) - The unique identifier of the task.
-title (String) - The title of the task.
-description (String) - The description of the task.
-status (boolean) - The status of the task (true for completed, false for incomplete).
-date (LocalDate) - The date associated with the task.
-TaskRepository
-The TaskRepository interface is a Spring Data JPA repository responsible for database operations related to tasks.
+#### GET `/api/v1/tasks/{id}`
+- **Description:** Retrieve a specific task by its ID.
+- **Parameters:**
+  - `id` (Long): The ID of the task to retrieve.
+- **Returns:** The task with the specified ID if found.
 
-TaskService
-The TaskService class contains business logic for managing tasks. It interacts with the TaskRepository to perform CRUD operations on tasks.
+#### POST `/api/v1/tasks`
+- **Description:** Create a new task.
+- **Payload:** A JSON object representing the new task.
+- **Returns:** No response body.
 
-Methods
-getTasks()
-Description: Retrieve all tasks.
-Returns: A list of all tasks.
+#### PUT `/api/v1/tasks/{id}`
+- **Description:** Update a task by its ID.
+- **Parameters:**
+  - `id` (Long): The ID of the task to update.
+- **Payload:** A JSON object representing the updated task.
+- **Returns:** The updated task if successful.
 
-addTodo(Task task)
-Description: Create a new task.
-Parameters:
+#### DELETE `/api/v1/tasks/{id}`
+- **Description:** Delete a task by its ID.
+- **Parameters:**
+  - `id` (Long): The ID of the task to delete.
+- **Returns:** No response body.
 
-task (Task) - The new task to be created.
-Returns: No return value.
-getTaskById(Long id)
-Description: Retrieve a specific task by its ID.
-Parameters:
+## Task
 
-id (Long) - The ID of the task to retrieve.
-Returns: The task with the specified ID if found.
-updateTask(Task newTask, Long id)
-Description: Update a task by its ID.
-Parameters:
+The `Task` class represents a task entity within the application. This class is a JPA entity, mapping to a database table that stores task data.
 
-newTask (Task) - The updated task.
-id (Long) - The ID of the task to update.
-Returns: The updated task if successful.
-deleteTask(Long id)
-Description: Delete a task by its ID.
-Parameters:
+### Fields
 
-id (Long) - The ID of the task to delete.
-Returns: No return value.
-TaskNotFoundException
-The TaskNotFoundException class is an exception thrown when a task is not found in the database.
+- **id** (Long): The unique identifier of the task.
+- **title** (String): The title of the task.
+- **description** (String): A brief description of the task.
+- **status** (boolean): The status of the task (`true` for completed, `false` for incomplete).
+- **date** (LocalDate): The date associated with the task.
 
-TaskConfig
-The TaskConfig class is a configuration class responsible for initializing some sample tasks in the database using CommandLineRunner.
+## TaskRepository
 
-Sample Tasks
-The following sample tasks are created during application startup:
+The `TaskRepository` interface extends Spring Data JPA to handle database operations related to tasks. It provides an abstraction over standard CRUD operations.
 
-Title: Set up Project Files
-Description: Set up the Project file structure
-Status: Completed
-Date: July 24, 2023
+## TaskService
 
-Title: Set up API
-Description: Make an API endpoint that allows you to get all tasks
-Status: Completed
-Date: July 24, 2023
+The `TaskService` class encapsulates business logic for managing tasks. It interacts with the `TaskRepository` to perform various operations.
 
-Title: Work on Create a task
-Description: Make an API endpoint that allows you to create a task
-Status: Incomplete
-Date: July 25, 2023
+### Methods
 
-Title: Work on Updating a task
-Description: Make an API endpoint that allows you update a task based on the ID
-Status: Incomplete
-Date: July 26, 2023
+- **getTasks()**
+  - **Description:** Retrieve all tasks.
+  - **Returns:** A list of all tasks.
 
-Title: Work on Deleting a task
-Description: Make an API endpoint that allows you to delete a task based on the ID
-Status: Incomplete
-Date: July 28, 2023
+- **addTodo(Task task)**
+  - **Description:** Create a new task.
+  - **Parameters:** 
+    - `task` (Task): The new task to be created.
+  - **Returns:** No return value.
+
+- **getTaskById(Long id)**
+  - **Description:** Retrieve a specific task by its ID.
+  - **Parameters:**
+    - `id` (Long): The ID of the task to retrieve.
+  - **Returns:** The task with the specified ID if found.
+
+- **updateTask(Task newTask, Long id)**
+  - **Description:** Update a task by its ID.
+  - **Parameters:** 
+    - `newTask` (Task): The updated task.
+    - `id` (Long): The ID of the task to update.
+  - **Returns:** The updated task if successful.
+
+- **deleteTask(Long id)**
+  - **Description:** Delete a task by its ID.
+  - **Parameters:** 
+    - `id` (Long): The ID of the task to delete.
+  - **Returns:** No return value.
+
+## TaskNotFoundException
+
+The `TaskNotFoundException` class is a custom exception thrown when a task cannot be found in the database.
+
+## TaskConfig
+
+The `TaskConfig` class serves as a configuration class that initializes the database with sample tasks using the `CommandLineRunner`.
+
+### Sample Tasks
+
+The following sample tasks are initialized when the application starts:
+
+1. **Title:** Set up Project Files
+   - **Description:** Set up the project file structure.
+   - **Status:** Completed
+   - **Date:** July 24, 2023
+
+2. **Title:** Set up API
+   - **Description:** Create an API endpoint to retrieve all tasks.
+   - **Status:** Completed
+   - **Date:** July 24, 2023
+
+3. **Title:** Work on Create a Task
+   - **Description:** Create an API endpoint to create a new task.
+   - **Status:** Incomplete
+   - **Date:** July 25, 2023
+
+4. **Title:** Work on Updating a Task
+   - **Description:** Create an API endpoint to update a task by ID.
+   - **Status:** Incomplete
+   - **Date:** July 26, 2023
+
+5. **Title:** Work on Deleting a Task
+   - **Description:** Create an API endpoint to delete a task by ID.
+   - **Status:** Incomplete
+   - **Date:** July 28, 2023
